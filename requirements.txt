@@ -1,0 +1,11 @@
+pylint
+PyYAML
+jsonschema
+flask
+waitress
+flask-sqlalchemy
+mysqlclient
+sqlalchemy-utils
+jinja2
+jsonify
+flask-restx
