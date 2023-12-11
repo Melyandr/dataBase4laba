@@ -13,3 +13,7 @@ class PilotHasFlightService(GeneralService):
     Realisation of Client service.
     """
     _dao = pilot_has_flight_dao
+
+    def insert_in_pilot_has_flights(self, pilot_id, flight_id):
+        result = self._dao.insert_in_pilot_has_flights(pilot_id, flight_id)
+        return result

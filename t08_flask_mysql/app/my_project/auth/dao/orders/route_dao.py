@@ -6,6 +6,8 @@ apavelchak@gmail.com
 
 from typing import List
 
+from sqlalchemy import text
+
 from t08_flask_mysql.app.my_project.auth.dao.general_dao import GeneralDAO
 from t08_flask_mysql.app.my_project.auth.domain import Route
 
@@ -16,18 +18,18 @@ class RouteDAO(GeneralDAO):
     """
     _domain_type = Route
 
-    def find_by_name(self, name: str) -> List[object]:
-        """
-        Gets Client objects from database table by field name.
-        :param name: name value
-        :return: search objects
-        """
-        return self._session.query(Route).filter(Route.name == name).order_by(Route.name).all()
+    def insert_with_params_routes(self, start_country_params, last_country_params, marshrut_id_params
+                                  , max_price_param):
+        self._session.execute(text(
+            f"call insert_with_params_route('{start_country_params}', '{last_country_params}', '{marshrut_id_params}', '{max_price_param}')",
+        ))
+        self._session.commit()
+        return "inserted with params"
 
-    def find_by_number(self, number: int) -> List[object]:
-        """
-        Gets Client objects from database table by field 'number'.
-        :param number: number value
-        :return: search objects
-        """
-        return self._session.query(Route).filter(Route.number == number).order_by(Route.number.desc()).all()
+    def finding_max_price_in_route(self):
+        result = self._session.execute(text(
+            f"call finding_max_price_in_route()",
+
+        ))
+
+        return result.scalar()

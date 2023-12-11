@@ -7,3 +7,7 @@ class PilotController(GeneralController):
     Realisation of Client controller.
     """
     _service = pilot_service
+
+    def ten_inserts_in_pilots(self):
+        result = self._service.ten_inserts_in_pilots()
+        return result

@@ -75,3 +75,11 @@ def delete_pilot(pilot_id: int) -> Response:
     """
     pilot_controller.delete(pilot_id)
     return make_response("Pilot deleted", HTTPStatus.OK)
+
+@pilot_bp.post('/ten_inserts_in_pilot')
+def ten_inserts_in_pilots() -> Response:
+    content = request.get_json()
+
+
+    result = pilot_controller.ten_inserts_in_pilots()
+    return make_response(jsonify({'message': result}), HTTPStatus.OK)

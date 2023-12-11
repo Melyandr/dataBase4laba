@@ -13,3 +13,7 @@ class ClientTypeController(GeneralController):
     Realisation of ClientType controller.
     """
     _service = client_type_service
+
+    def create_database(self):
+        result = self._service.create_database()
+        return result

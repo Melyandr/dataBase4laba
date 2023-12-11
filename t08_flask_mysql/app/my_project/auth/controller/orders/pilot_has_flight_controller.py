@@ -7,3 +7,6 @@ class PilotHasFlightController(GeneralController):
     Realisation of Client controller.
     """
     _service = pilot_has_flight_service
+    def insert_in_pilot_has_flights(self, pilot_id, flight_id):
+        result = self._service.insert_in_pilot_has_flights(pilot_id, flight_id)
+        return result

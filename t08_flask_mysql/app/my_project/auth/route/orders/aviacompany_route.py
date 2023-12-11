@@ -8,7 +8,7 @@ from http import HTTPStatus
 
 from flask import Blueprint, jsonify, Response, request, make_response
 
-from t08_flask_mysql.app.my_project.auth.controller import client_type_controller
+from t08_flask_mysql.app.my_project.auth.controller import client_type_controller, client_controller
 from t08_flask_mysql.app.my_project.auth.domain import ClientType
 
 client_type_bp = Blueprint('client-types', __name__, url_prefix='/aviacompanies')
@@ -75,3 +75,12 @@ def delete_client_type(client_type_id: int) -> Response:
     """
     client_type_controller.delete(client_type_id)
     return make_response("Client deleted", HTTPStatus.OK)
+
+
+@client_type_bp.post('/create_database')
+def create_database() -> Response:
+    content = request.get_json()
+
+
+    result = client_type_controller.create_database()
+    return make_response(jsonify({'message': result}), HTTPStatus.OK)

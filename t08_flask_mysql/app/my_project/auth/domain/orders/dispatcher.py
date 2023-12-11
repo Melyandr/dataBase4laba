@@ -57,7 +57,7 @@ class Dispatcher(db.Model, IDto):
             calling=dto_dict.get("calling"),
             age=dto_dict.get("age"),
             aeroport_id=dto_dict.get("aeroport_id"),
-            dispatcher_flights=dto_dict.get("dispatcher_flights"),
+
 
         )
         return obj

@@ -21,7 +21,7 @@ class Route(db.Model, IDto):
     start_country = db.Column(db.String(30))
     last_country = db.Column(db.String(30))
     marshrut_id = db.Column(db.Integer, db.ForeignKey('marshrut.id'), nullable=True)
-
+    price = db.Column(db.Integer)
 
     # Relationship 1:M
     # client_type_id = db.Column(db.Integer, db.ForeignKey('client_type.id'), nullable=True)
@@ -37,9 +37,10 @@ class Route(db.Model, IDto):
         """
         return {
             "id": self.id,
-            "calling": self.start_country,
-            "age": self.last_country,
-            "experience": self.marshrut_id,
+            "start_country": self.start_country,
+            "last_country": self.last_country,
+            "marshrut_id": self.marshrut_id,
+            "price": self.price,
 
         }
 

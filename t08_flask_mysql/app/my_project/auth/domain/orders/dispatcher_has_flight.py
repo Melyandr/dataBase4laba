@@ -26,7 +26,7 @@ class DispatcherHasFlight(db.Model, IDto):
     # client_type = db.relationship("ClientType", backref="clients")  # only on the child class
 
     def __repr__(self) -> str:
-        return f"Client({self.id}, '{self.dispatcher_id}', '{self.flight_id})"
+        return f"dispatcher_has_flight({self.id}, '{self.dispatcher_id}', '{self.flight_id})"
 
     def put_into_dto(self) -> Dict[str, Any]:
         """

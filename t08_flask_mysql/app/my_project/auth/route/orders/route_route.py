@@ -75,3 +75,24 @@ def delete_route(route_id: int) -> Response:
     """
     route_controller.delete(route_id)
     return make_response("route deleted", HTTPStatus.OK)
+
+
+@route_bp.post('/insert_with_params_route')
+def insert_with_params_routes() -> Response:
+    content = request.get_json()
+    start_country_params = content.get('start_country_params')
+    last_country_params = content.get('last_country_params')
+    marshrut_id_params = content.get('marshrut_id_params')
+    
+    max_price_param = content.get('max_price_param')
+
+    result = route_controller.insert_with_params_routes(start_country_params, last_country_params, marshrut_id_params,max_price_param)
+    return make_response(jsonify({'message': result}), HTTPStatus.OK)
+
+
+@route_bp.post('/finding_max_price_in_route')
+def finding_max_price_in_route() -> Response:
+    content = request.get_json()
+
+    result = route_controller.finding_max_price_in_route()
+    return make_response(jsonify({'message': result}), HTTPStatus.OK)

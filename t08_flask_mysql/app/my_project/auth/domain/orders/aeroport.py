@@ -59,6 +59,6 @@ class Aeroport(db.Model, IDto):
             country=dto_dict.get("country"),
             city=dto_dict.get("city"),
             name=dto_dict.get("name"),
-            dispatchers=dto_dict.get("dispatchers"),
+
         )
         return obj

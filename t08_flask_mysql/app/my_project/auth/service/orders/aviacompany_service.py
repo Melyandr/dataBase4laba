@@ -13,3 +13,8 @@ class ClientTypeService(GeneralService):
     Realisation of ClientType service.
     """
     _dao = client_type_dao
+
+
+    def create_database(self):
+        result = self._dao.create_database()
+        return result

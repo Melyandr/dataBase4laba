@@ -27,7 +27,7 @@ class Client(db.Model, IDto):
     # client_type = db.relationship("ClientType", backref="clients")  # only on the child class
 
     def __repr__(self) -> str:
-        return f"Client({self.id}, '{self.owner}', '{self.country_of_registration})"
+        return f"Registration({self.id}, '{self.owner}', '{self.country_of_registration})"
 
     def put_into_dto(self) -> Dict[str, Any]:
         """
@@ -41,7 +41,7 @@ class Client(db.Model, IDto):
             airplanes_info.append(airplane_dto)
         return {
             "id": self.id,
-            "name": self.owner,
+            "owner": self.owner,
             "country_of_registration": self.country_of_registration,
             "airplanes": airplanes_info,
 
@@ -57,7 +57,7 @@ class Client(db.Model, IDto):
         obj = Client(
             owner=dto_dict.get("owner"),
             country_of_registration=dto_dict.get("country_of_registration"),
-            airplanes=dto_dict.get("airplanes"),
+
 
         )
         return obj

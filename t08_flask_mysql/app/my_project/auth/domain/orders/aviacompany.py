@@ -26,7 +26,7 @@ class ClientType(db.Model, IDto):
     airplanes = db.relationship('Airplane', backref='aviacompany')
 
     def __repr__(self) -> str:
-        return f"Airplane({self.id}, '{self.name}' , {self.country_of_company})"
+        return f"Aviacompany({self.id}, '{self.name}' , {self.country_of_company})"
 
     # def put_into_dto(self) -> Dict[str, Any]:
     #     """
@@ -66,6 +66,6 @@ class ClientType(db.Model, IDto):
         obj = ClientType(
             name=dto_dict.get("name"),
             country_of_company=dto_dict.get("country_of_company"),
-            airplanes=dto_dict.get("airplanes"),
+
 )
         return obj

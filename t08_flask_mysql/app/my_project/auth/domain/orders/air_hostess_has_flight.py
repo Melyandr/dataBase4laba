@@ -34,7 +34,7 @@ class AirHostessHasFlight(db.Model, IDto):
         """
         return {
             "id": self.id,
-            "air_hostess_id": self.air_hostess.put_into_dto(), #переводить в словник і дозволяє побачити
+            "air_hostess_id": self.air_hostess.put_into_dto(),
             "flight_id": self.flight.put_into_dto(),
 
 

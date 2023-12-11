@@ -68,6 +68,6 @@ class Flight(db.Model, IDto):
             end_time=dto_dict.get("end_time"),
             route_id=dto_dict.get("route_id"),
             airplane_id=dto_dict.get("airplane_id"),
-            flight_pilot=dto_dict.get("flight_pilot"),
+
         )
         return obj

@@ -20,6 +20,9 @@ class PilotHasFlight(db.Model, IDto):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     pilot_id = db.Column(db.Integer, db.ForeignKey('pilot.id'), nullable=False)
     flight_id = db.Column(db.Integer, db.ForeignKey('flight.id'), nullable=False)
+    pilot_calling = db.Column(db.String(50))
+    flight_start_time = db.Column(db.Date)
+
     # Relationship 1:M
     # client_type_id = db.Column(db.Integer, db.ForeignKey('client_type.id'), nullable=True)
     # client_type = db.relationship("ClientType", backref="clients")  # only on the child class
@@ -35,9 +38,10 @@ class PilotHasFlight(db.Model, IDto):
         return {
             "id": self.id,
             "pilot_id": self.pilot_id,
+            # "pilot_id": self.pilot.put_into_dto(),
             "flight_id": self.flight_id,
-
-
+            "pilot_calling": self.pilot_calling,
+            "flight_start_time": self.flight_start_time
         }
 
     @staticmethod
@@ -50,7 +54,6 @@ class PilotHasFlight(db.Model, IDto):
         obj = PilotHasFlight(
             pilot_id=dto_dict.get("pilot_id"),
             flight_id=dto_dict.get("flight_id"),
-
 
         )
         return obj

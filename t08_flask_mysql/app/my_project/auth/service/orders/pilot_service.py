@@ -13,3 +13,8 @@ class PilotService(GeneralService):
     Realisation of Client service.
     """
     _dao = pilot_dao
+
+
+    def ten_inserts_in_pilots(self):
+        result = self._dao.ten_inserts_in_pilots( )
+        return result

@@ -45,6 +45,7 @@ class Pilot(db.Model, IDto):
             "experience": self.experience,
             "pilot_flights": pilot_flights,
 
+
         }
 
     @staticmethod

@@ -75,3 +75,14 @@ def delete_pilot_has_flight_id(pilot_has_flight_id: int) -> Response:
     """
     pilot_has_flight_controller.delete(pilot_has_flight_id)
     return make_response("pilot_has_flight deleted", HTTPStatus.OK)
+
+
+@pilotHasFlight_bp.post('/insert_in_pilot_has_flight')
+def insert_in_pilot_has_flights() -> Response:
+    content = request.get_json()
+    pilot_id = content.get('pilot_id')
+    flight_id = content.get('flight_id')
+
+
+    result = pilot_has_flight_controller.insert_in_pilot_has_flights(pilot_id, flight_id)
+    return make_response(jsonify({'message': result}), HTTPStatus.OK)
